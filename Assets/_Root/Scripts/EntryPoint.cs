@@ -1,5 +1,8 @@
 using Profile;
 using UnityEngine;
+using Services.IAP;
+using Services.Analytics;
+using Services.Ads.UnityAds;
 
 internal class EntryPoint : MonoBehaviour
 {
@@ -7,6 +10,7 @@ internal class EntryPoint : MonoBehaviour
     private const GameState InitialState = GameState.Start;
 
     [SerializeField] private Transform _placeForUi;
+
 
     private MainController _mainController;
 

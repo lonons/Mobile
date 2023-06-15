@@ -10,10 +10,12 @@ namespace Game.Car
 
         public GameObject ViewGameObject => _view.gameObject;
 
+
         public CarController()
         {
             _view = LoadView();
         }
+
 
         private CarView LoadView()
         {

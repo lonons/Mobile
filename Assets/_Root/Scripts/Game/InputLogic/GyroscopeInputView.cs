@@ -34,7 +34,7 @@ namespace Game.InputLogic
             quaternion.Normalize();
 
             float offset = quaternion.x + quaternion.y;
-            float moveValue = _speed * _inputMultiplier * Time.deltaTime * offset;
+            float moveValue = Speed * _inputMultiplier * Time.deltaTime * offset;
 
             float abs = Mathf.Abs(moveValue);
             float sign = Mathf.Sign(moveValue);

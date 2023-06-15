@@ -5,7 +5,7 @@ namespace Game.InputLogic
 {
     internal class InputAcceleration : BaseInputView
     {
-        [SerializeField] private float _inputMultiplier = 0.05f;
+        [SerializeField] private float _inputMultiplier = 0.2f;
 
 
         private void Start() =>
@@ -18,7 +18,7 @@ namespace Game.InputLogic
         private void Move()
         {
             Vector3 direction = CalcDirection();
-            float moveValue = _speed * _inputMultiplier * Time.deltaTime * direction.x;
+            float moveValue = Speed * _inputMultiplier * Time.deltaTime * direction.x;
 
             float abs = Mathf.Abs(moveValue);
             float sign = Mathf.Sign(moveValue);
