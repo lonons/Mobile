@@ -1,5 +1,5 @@
-using JoostenProductions;
 using UnityEngine;
+using JoostenProductions;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace Game.InputLogic

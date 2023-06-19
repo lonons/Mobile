@@ -5,9 +5,10 @@ namespace Game.InputLogic
 {
     internal abstract class BaseInputView : MonoBehaviour
     {
+        protected float Speed;
+
         private SubscriptionProperty<float> _leftMove;
         private SubscriptionProperty<float> _rightMove;
-        protected float _speed;
 
 
         public virtual void Init(
@@ -17,13 +18,14 @@ namespace Game.InputLogic
         {
             _leftMove = leftMove;
             _rightMove = rightMove;
-            _speed = speed;
+            Speed = speed;
         }
 
-        protected virtual void OnLeftMove(float value) =>
+
+        protected void OnLeftMove(float value) =>
             _leftMove.Value = value;
 
-        protected virtual void OnRightMove(float value) =>
+        protected void OnRightMove(float value) =>
             _rightMove.Value = value;
     }
 }
