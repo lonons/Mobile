@@ -11,8 +11,9 @@ internal class MainController : BaseController
 
     private MainMenuController _mainMenuController;
     private SettingsMenuController _settingsMenuController;
-    private ShedController _shedController;
     private GameController _gameController;
+
+    private ShedContext _shedContext;
 
 
     public MainController(Transform placeForUi, ProfilePlayer profilePlayer)
@@ -24,16 +25,25 @@ internal class MainController : BaseController
         OnChangeGameState(_profilePlayer.CurrentState.Value);
     }
 
+    private void DisposseChildObjects()
+    {
+        _mainMenuController?.Dispose();
+        _settingsMenuController?.Dispose();
+        _shedContext?.Dispose();
+        _gameController?.Dispose();
+    }
+    
+
     protected override void OnDispose()
     {
-        DisposeControllers();
+        DisposseChildObjects();
         _profilePlayer.CurrentState.UnSubscribeOnChange(OnChangeGameState);
     }
 
 
     private void OnChangeGameState(GameState state)
     {
-        DisposeControllers();
+        DisposseChildObjects();
 
         switch (state)
         {
@@ -44,7 +54,7 @@ internal class MainController : BaseController
                 _settingsMenuController = new SettingsMenuController(_placeForUi, _profilePlayer);
                 break;
             case GameState.Shed:
-                _shedController = new ShedController(_placeForUi, _profilePlayer);
+                _shedContext = new ShedContext(_placeForUi,_profilePlayer);
                 break;
             case GameState.Game:
                 _gameController = new GameController(_placeForUi, _profilePlayer);
@@ -52,11 +62,4 @@ internal class MainController : BaseController
         }
     }
 
-    private void DisposeControllers()
-    {
-        _mainMenuController?.Dispose();
-        _settingsMenuController?.Dispose();
-        _shedController?.Dispose();
-        _gameController?.Dispose();
-    }
 }
