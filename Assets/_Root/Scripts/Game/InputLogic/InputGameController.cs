@@ -1,13 +1,13 @@
-using Game.Car;
 using Tool;
+using Game.Car;
 using UnityEngine;
 
 namespace Game.InputLogic
 {
     internal class InputGameController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Input/KeyBoardMove");
-        private BaseInputView _view;
+        private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Input/KeyboardMove");
+        private readonly BaseInputView _view;
 
 
         public InputGameController(
@@ -19,14 +19,14 @@ namespace Game.InputLogic
             _view.Init(leftMove, rightMove, car.Speed);
         }
 
+
         private BaseInputView LoadView()
         {
             GameObject prefab = ResourcesLoader.LoadPrefab(_resourcePath);
             GameObject objectView = Object.Instantiate(prefab);
             AddGameObject(objectView);
 
-            BaseInputView view = objectView.GetComponent<BaseInputView>();
-            return view;
+            return objectView.GetComponent<BaseInputView>();
         }
     }
 }
