@@ -3,9 +3,12 @@ using UnityEngine;
 
 internal class EntryPoint : MonoBehaviour
 {
-    private const float SpeedCar = 15f;
-    private const GameState InitialState = GameState.Start;
+    [Header("Initial Settings")]
+    [SerializeField] private float _speedCar;
+    [SerializeField] private float _jumpHeightCar;
+    [SerializeField] private GameState _initialState;
 
+    [Header("Scene Objects")]
     [SerializeField] private Transform _placeForUi;
 
     private MainController _mainController;
@@ -13,7 +16,7 @@ internal class EntryPoint : MonoBehaviour
 
     private void Start()
     {
-        var profilePlayer = new ProfilePlayer(SpeedCar, InitialState);
+        var profilePlayer = new ProfilePlayer(_speedCar, _jumpHeightCar, _initialState);
         _mainController = new MainController(_placeForUi, profilePlayer);
     }
 
