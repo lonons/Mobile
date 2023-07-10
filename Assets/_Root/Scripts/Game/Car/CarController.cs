@@ -6,7 +6,7 @@ namespace Game.Car
 {
     internal class CarController : BaseController, IAbilityActivator
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Game/Car");
+        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Car");
         private readonly CarModel _model;
         private readonly CarView _view;
 
